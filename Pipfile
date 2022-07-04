@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "2.1.2"
+flask = "*"
 gunicorn = "*"
 python-binance = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.6"
+python_version = "3.10"
