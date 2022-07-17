@@ -4,16 +4,19 @@ from binance.client import Client
 from binance.um_futures import UMFutures
 from flask import Flask, request
 from dotenv import dotenv_values
+from datetime import datetime
 
 config = dotenv_values(".env")
 
 future_client = UMFutures(key=config['BINANCE_APIKEY'], secret=config['BINANCE_SECRET'])
 
 app = Flask(__name__)
+
 client = Client(config['BINANCE_APIKEY'], config['BINANCE_SECRET'], testnet=False)
 
+from storage import *
 
-
+now = datetime.now()
 
 def order(side, symbol, order_price, passphrase):
     try:
@@ -23,42 +26,53 @@ def order(side, symbol, order_price, passphrase):
             if a['asset'] == "USDT":
                 balance = a['availableBalance']
 
-        quantity =  round(float(float(balance)/5/float(order_price)), 3)
+        quantity =  round(float(float(balance)/2/float(order_price)), 3)
 
         longSl = round(float(order_price)*0.995, 2)
         longTp = round(float(order_price)*1.01, 2)
         shortSl = round(float(order_price)*1.005, 2)
         shortTp = round(float(order_price)*0.99, 2)
         print(f"{passphrase} {symbol} Sending order - {side} {symbol} at {order_price}. quantity :  {quantity} and balance : {balance}")
-        order = client.futures_create_order(symbol=symbol, side=side, type="MARKET", quantity=quantity)
+        order = client.futures_create_order(symbol=symbol, side=side, type="MARKET", quantity=quantity, isolated=True)
 
-        if order:
-            print(f" {passphrase} {symbol} Executed order {order}.")
+        if (order):
+            print(f" {passphrase} {symbol} Executed order {order}. {now}")
+
             if side == "BUY":
-                print(f" sl : {longSl}")
+                slorder = client.futures_create_order(symbol=symbol, side="SELL", type="STOP_MARKET",
+                                                      quantity=quantity, stopPrice=longSl)
+                print(f" sl : {slorder}")
 
-                sl_order = client.futures_create_order(symbol=symbol, side="SELL", type="STOP_MARKET", stopPrice=longSl,
-                                                       closePosition='true')
-                print(f" sl : {sl_order}")
-                tp_order = client.futures_create_order(symbol=symbol, side="SELL", type="TAKE_PROFIT_MARKET", stopPrice=longTp,
-                                                       closePosition='true')
-                print(f" tp : {tp_order}")
-
+                tporder = client.futures_create_order(symbol=symbol, side="SELL",
+                                                      type="TAKE_PROFIT_MARKET", quantity=quantity,
+                                                      stopPrice=longTp)
+                print(f" tp : {tporder}")
+                if (slorder and tporder):
+                    saveOrder(now, slorder, tporder, order, config['GIT_TOKEN'])
+            elif side == "SELL":
+                print("tsb")
+                slorder = client.futures_create_order(symbol=symbol, side="BUY", type="STOP_MARKET",
+                                      quantity=quantity, stopPrice=shortSl)
+                print(f" sl : {slorder}")
+                tporder = client.futures_create_order(symbol=symbol, side="BUY",
+                                      type="TAKE_PROFIT_MARKET", quantity=quantity,
+                                      stopPrice=shortTp)
+                print(f" tp : {tporder}")
+                if (slorder and tporder):
+                    saveOrder(now, slorder, tporder, order, config['GIT_TOKEN'])
             else:
-                sl_order = client.futures_create_order(symbol=symbol, side="BUY", type="STOP_LOSS_MARKET", stopPrice=shortSl,
-                                                       closePosition='true')
-                print(f" sl : {sl_order}")
-
-                tp_order = client.futures_create_order(symbol=symbol, side="BUY", type="TAKE_PROFIT_MARKET", stopPrice=shortTp,
-                                                       closePosition='true')
-                print(f" tp : {tp_order}")
-
+                print("========================")
+                print("Sand request")
+                print("========================")
         else:
+            # order = client.futures_create_order(symbol=symbol, side=side, type="MARKET", quantity=quantity)
+
             print(f" {passphrase} {symbol} Not Executed order - {side} {quantity} {symbol} at {order_price}.")
     except Exception as e:
         print("An exception occured - {}".format(e))
         return False
 
+    print("Request successfully executed")
     return order
 
 
