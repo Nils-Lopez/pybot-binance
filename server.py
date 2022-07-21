@@ -18,7 +18,7 @@ from storage import *
 
 now = datetime.now()
 
-def order(side, symbol, order_price, passphrase):
+def order(side, symbol, order_price, passphrase, order_size, leverage, loss, profit):
     try:
         balance = future_client.balance(recvWindow=6000)
 
@@ -26,12 +26,12 @@ def order(side, symbol, order_price, passphrase):
             if a['asset'] == "USDT":
                 balance = a['availableBalance']
 
-        quantity =  round(float(float(balance)/2/float(order_price)), 3)
-
-        longSl = round(float(order_price)*0.995, 2)
-        longTp = round(float(order_price)*1.01, 2)
-        shortSl = round(float(order_price)*1.005, 2)
-        shortTp = round(float(order_price)*0.99, 2)
+        quantity =  round(float(float(balance)*(order_size*0.01)/float(order_price)), 3)
+        await client.futures_change_leverage(symbol=symbol, leverage=leverage)
+        longSl = round(float(order_price)*(1 - (loss*0.01)), 2)
+        longTp = round(float(order_price)*(1 + (profit*0.01)), 2)
+        shortSl = round(float(order_price)*(1 + (loss*0.01)), 2)
+        shortTp = round(float(order_price)*(1 - (profit*0.01)), 2)
         print(f"{passphrase} {symbol} Sending order - {side} {symbol} at {order_price}. quantity :  {quantity} and balance : {balance}")
         order = client.futures_create_order(symbol=symbol, side=side, type="MARKET", quantity=quantity, isolated=True)
 
@@ -94,6 +94,10 @@ def webhook():
     side = data['side'].upper()
     ticker = data['ticker'].upper()
     order_price = data['order_price']
+    leverage = data['leverage']
+    loss = data['stop_loss']
+    profit = data['take_profit']
+    order_size = data['order_size']
     order_response = order(side, ticker, order_price, data['passphrase'])
 
 
