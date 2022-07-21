@@ -27,15 +27,16 @@ def order(side, symbol, order_price, passphrase, order_size, leverage, loss, pro
                 balance = a['availableBalance']
 
         quantity =  round(float(float(balance)*(order_size*0.01)/float(order_price)), 3)
-        await client.futures_change_leverage(symbol=symbol, leverage=leverage)
-        longSl = round(float(order_price)*(1 - (loss*0.01)), 2)
-        longTp = round(float(order_price)*(1 + (profit*0.01)), 2)
-        shortSl = round(float(order_price)*(1 + (loss*0.01)), 2)
-        shortTp = round(float(order_price)*(1 - (profit*0.01)), 2)
+        if leverage:
+            await client.futures_change_leverage(symbol=symbol, leverage=leverage)
+        longSl = round(float(order_price)*(1 - (float(loss)*0.01)), 2)
+        longTp = round(float(order_price)*(1 + (float(profit*0.01)), 2)
+        shortSl = round(float(order_price)*(1 + (float(loss)*0.01)), 2)
+        shortTp = round(float(order_price)*(1 - (float(profit)*0.01)), 2)
         print(f"{passphrase} {symbol} Sending order - {side} {symbol} at {order_price}. quantity :  {quantity} and balance : {balance}")
-        order = client.futures_create_order(symbol=symbol, side=side, type="MARKET", quantity=quantity, isolated=True)
-
-        if (order):
+        order = client.futures_create_order(symbol=symbol, side=side, type="MARKET", quantity=quantity,
+                                                isolated=True)
+        if order and loss != "exit":
             print(f" {passphrase} {symbol} Executed order {order}. {now}")
 
             if side == "BUY":
@@ -66,8 +67,10 @@ def order(side, symbol, order_price, passphrase, order_size, leverage, loss, pro
                 print("========================")
         else:
             # order = client.futures_create_order(symbol=symbol, side=side, type="MARKET", quantity=quantity)
-
-            print(f" {passphrase} {symbol} Not Executed order - {side} {quantity} {symbol} at {order_price}.")
+            if order and loss == "exit":
+                print(f"Successfully stopped order : {order}")
+            else:
+                print(f" {passphrase} {symbol} Not Executed order - {side} {quantity} {symbol} at {order_price}.")
     except Exception as e:
         print("An exception occured - {}".format(e))
         return False
