@@ -98,7 +98,7 @@ def webhook():
     loss = data['stop_loss']
     profit = data['take_profit']
     order_size = data['order_size']
-    order_response = order(side, ticker, order_price, data['passphrase'])
+    order_response = order(side, ticker, order_price, data['passphrase'], order_size, leverage, loss, profit)
 
 
     if order_response:
