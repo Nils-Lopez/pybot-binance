@@ -1,3 +1,6 @@
 flask
 gunicorn
 python-binance
+dotenv
+telegram
+pymongo
