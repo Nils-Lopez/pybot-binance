@@ -21,7 +21,7 @@ connect_db(db_client)
 
 from trade_cop import *
 
-def order(side, symbol, order_price, passphrase, order_size, leverage, loss, req_type, strategy, exchange):
+def order(side, symbol, order_price, passphrase, order_size, leverage, loss, req_type, strategy, exchange, tp_size):
     try:
         res = "loading"
         print(f"{passphrase} trading {symbol} with {strategy} on {exchange} Sending order - {side} {symbol} at {order_price}.")
@@ -44,7 +44,8 @@ def order(side, symbol, order_price, passphrase, order_size, leverage, loss, req
                 position = get_order(db_client, exchange, strategy, symbol)
                 res_binance = connect_binance()
                 if res_binance[0] == "success":
-                    exit_order = res_binance[1].futures_create_order(symbol=symbol, side=side, type="MARKET", quantity=position['quantity'])
+                    tp_quantity = position['quantity'] * tp_size
+                    exit_order = res_binance[1].futures_create_order(symbol=symbol, side=side, type="MARKET", quantity=tp_quantity)
                     cancel_stop_loss = res_binance[1].futures_cancel_order(symbol=symbol, orderId=position['stopLossId'], timestamp=True)
                     if exit_order and cancel_stop_loss:
                         send_telegram_alert(f"Successfully stopped order : {exit_order} {position['quantity']} and cancelled sl : {cancel_stop_loss}")
@@ -75,6 +76,7 @@ def webhook():
 
     side = data['side'].upper()
     ticker = data['ticker'].upper()
+    tp_size = data['tp_size']
     order_price = data['order_price']
     leverage = data['leverage']
     loss = data['stop_loss']
@@ -82,7 +84,7 @@ def webhook():
     req_type = data['req_type']
     strategy = data['strategy']
     exchange = data['exchange']
-    order_response = order(side, ticker, order_price, data['passphrase'], order_size, leverage, loss, req_type, strategy, exchange)
+    order_response = order(side, ticker, order_price, data['passphrase'], order_size, leverage, loss, req_type, strategy, exchange, tp_size)
     if order_response:
         return {
             "code": "success",
