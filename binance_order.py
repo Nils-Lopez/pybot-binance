@@ -2,13 +2,22 @@ from binance.client import Client
 from binance.um_futures import UMFutures
 from binance.helpers import round_step_size
 
-from dotenv import dotenv_values
-
-config = dotenv_values(".env")
-
 from storage import  *
 
 from telegram_sender import *
+
+import os
+
+if not os.environ.get("PRODUCTION"):
+    from dotenv import load_dotenv
+    env_var = load_dotenv(".env")
+    def config (str):
+        return env_var[str]
+else :
+    def config (str):
+        return os.getenv(str)
+
+
 
 def send_long (client, symbol, leverage, quantity, long_sl, passphrase):
     client.futures_change_leverage(symbol=symbol, leverage=leverage)
@@ -23,7 +32,7 @@ def send_long (client, symbol, leverage, quantity, long_sl, passphrase):
         }
     else:
         print(f' Error while sending order on Binance {symbol} {passphrase} {client}')
-        send_telegram_alert(f' Error while sending order on Binance {symbol} {passphrase} {client}')
+        send_telegram_alert(f' Error while sending order on Binance {symbol} {passphrase} {client}', config('TG_TOKEN'))
         return {"error"}
 
 def binance_long (symbol, leverage, order_size, order_price, loss, exchange, db_client, strategy, passphrase):
@@ -50,11 +59,11 @@ def send_short (client, symbol, leverage, quantity, short_sl, passphrase):
         return ["success", order, sl_order]
     else:
         print(f' Error while sending order on Binance {symbol} {passphrase} {client}')
-        send_telegram_alert(f' Error while sending order on Binance {symbol} {passphrase} {client}')
+        send_telegram_alert(f' Error while sending order on Binance {symbol} {passphrase} {client}', config('TG_TOKEN'))
         return "error"
 
 def binance_short (symbol, leverage, order_size, order_price, loss, exchange, db_client, strategy, passphrase):
-    res_binance = connect_binance()
+    res_binance = connect_binance(config)
     if res_binance[0] == "success":
         binance_client = res_binance[1]
         binance_balance = res_binance[2]
@@ -62,20 +71,20 @@ def binance_short (symbol, leverage, order_size, order_price, loss, exchange, db
         tick = float(sym["filters"][0]["tickSize"])
         quantity = round(float(float(binance_balance) * (float(order_size) * 0.01) / float(order_price)), 3)
         short_sl = round_step_size(float(order_price) * (1 + (float(loss) * 0.01)), tick)
-        send_telegram_alert(f"TSB : {symbol} {leverage} {quantity} {short_sl} {passphrase}")
+        send_telegram_alert(f"TSB : {symbol} {leverage} {quantity} {short_sl} {passphrase}", config('TG_TOKEN'))
         res_short = send_short(binance_client, symbol, leverage, quantity, short_sl, passphrase)
         if res_short[0] == "success":
             order = res_short[1]
             sl_order = res_short[2]
             print(f' {passphrase} {symbol} Executed order {order} with sl : {sl_order}.')
-            send_telegram_alert(f' {passphrase} {symbol} Executed order {order} with sl : {sl_order}.')
+            send_telegram_alert(f' {passphrase} {symbol} Executed order {order} with sl : {sl_order}.', config('TG_TOKEN'))
             save_order(db_client, order, quantity, exchange, strategy, symbol, sl_order["orderId"])
             return ["success"]
 
 def connect_binance ():
-    future_client = UMFutures(key=config['BINANCE_APIKEY'], secret=config['BINANCE_SECRET'])
+    future_client = UMFutures(key=config('BINANCE_APIKEY'), secret=config('BINANCE_SECRET'))
     print('Binance connected')
-    client = Client(config['BINANCE_APIKEY'], config['BINANCE_SECRET'], testnet=False)
+    client = Client(config('BINANCE_APIKEY'), config('BINANCE_SECRET'), testnet=False)
     balance = future_client.balance(recvWindow=6000)
     for a in balance:
         if a['asset'] == "USDT":
@@ -83,5 +92,5 @@ def connect_binance ():
     if client and balance:
         return ["success", client, balance]
     else:
-        send_telegram_alert("An error occured while connecting to binance api")
+        send_telegram_alert("An error occured while connecting to binance api", config('TG_TOKEN'))
         return "error"

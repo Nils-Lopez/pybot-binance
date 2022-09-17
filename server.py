@@ -1,9 +1,15 @@
 import json, os
 
 from flask import Flask, request
-from dotenv import dotenv_values
 
-config = dotenv_values(".env")
+if not os.environ.get("PRODUCTION"):
+    from dotenv import load_dotenv
+    env_var = load_dotenv(".env")
+    def config (str):
+        return env_var[str]
+else :
+    def config (str):
+        return os.getenv(str)
 
 app = Flask(__name__)
 
@@ -15,7 +21,7 @@ from telegram_sender import *
 
 from pymongo import MongoClient
 
-db_client = MongoClient(config['MONGODB_URI'])
+db_client = MongoClient(config('MONGODB_URI'))
 
 connect_db(db_client)
 
@@ -31,14 +37,14 @@ def order(side, symbol, order_price, passphrase, order_size, leverage, loss, req
                     binance_order = binance_long(symbol, leverage, order_size, order_price, loss, exchange, db_client, strategy, passphrase)
                     if binance_order[0] == "success":
                         print(f'Successfully executed long order alert on Binance :)')
-                        send_telegram_alert(f'Successfully executed long order alert on Binance :)')
+                        send_telegram_alert(f'Successfully executed long order alert on Binance :)', config('TG_TOKEN'))
                         res = "success"
                 elif side == "SELL":
                     binance_order = binance_short(symbol, leverage, order_size, order_price, loss, exchange, db_client,
                                                  strategy, passphrase)
                     if binance_order[0] == "success":
                         print(f'Successfully executed short order alert on Binance :)')
-                        send_telegram_alert(f'Successfully executed short order alert on Binance :)')
+                        send_telegram_alert(f'Successfully executed short order alert on Binance :)', config('TG_TOKEN'))
                         res = "success"
             elif req_type == "exit":
                 position = get_order(db_client, exchange, strategy, symbol)
@@ -48,16 +54,16 @@ def order(side, symbol, order_price, passphrase, order_size, leverage, loss, req
                     exit_order = res_binance[1].futures_create_order(symbol=symbol, side=side, type="MARKET", quantity=tp_quantity)
                     cancel_stop_loss = res_binance[1].futures_cancel_order(symbol=symbol, orderId=position['stopLossId'], timestamp=True)
                     if exit_order and cancel_stop_loss:
-                        send_telegram_alert(f"Successfully stopped order : {exit_order} {position['quantity']} and cancelled sl : {cancel_stop_loss}")
+                        send_telegram_alert(f"Successfully stopped order : {exit_order} {position['quantity']} and cancelled sl : {cancel_stop_loss}", config('TG_TOKEN'))
                         res = "success"
             else:
                 print(f" {passphrase} {symbol} Not Executed order - {side} {symbol} at {order_price}.")
         else:
             print(f"Wrong exchange id : {exchange}")
-            send_telegram_alert(f"Wrong exchange id : {exchange}")
+            send_telegram_alert(f"Wrong exchange id : {exchange}", config('TG_TOKEN'))
     except Exception as e:
         print("An exception occured - {}".format(e))
-        send_telegram_alert("An exception occured - {}".format(e))
+        send_telegram_alert("An exception occured - {}".format(e), config('TG_TOKEN'))
         return False
 
     print("Request successfully executed")
@@ -68,7 +74,7 @@ def webhook():
 
     data = json.loads(request.data)
 
-    if data['passphrase'] != config['WEBHOOK_PASSPHRASE']:
+    if data['passphrase'] != config('WEBHOOK_PASSPHRASE'):
         return {
             "code": "error",
             "message": "Nice try, invalid passphrase"
