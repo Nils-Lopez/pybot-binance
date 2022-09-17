@@ -106,3 +106,9 @@ def start_stream ():
         "code": "success",
         "message": "Stream started."
     }
+
+@app.route('/', methods=['GET'])
+def render_index ():
+    return {
+        "message": "work in progress, no user interface so far"
+    }
