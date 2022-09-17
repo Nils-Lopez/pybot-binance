@@ -1,6 +1,6 @@
 flask
 gunicorn
-python-binance
+python-binance==0.7.5
 python-dotenv
 python-telegram-bot
 pymongo
