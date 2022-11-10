@@ -2,14 +2,12 @@ import json, os
 
 from flask import Flask, request
 
-if not os.environ.get("PRODUCTION"):
-    from dotenv import load_dotenv
-    env_var = load_dotenv(".env")
-    def config (str):
-        return env_var[str]
-else :
-    def config (str):
-        return os.getenv(str)
+from dotenv import load_dotenv
+
+load_dotenv()
+
+def config (str):
+    os.getenv(str)
 
 app = Flask(__name__)
 
