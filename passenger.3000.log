@@ -1,0 +1,198 @@
+[ N 2022-11-21 13:09:37.5138 6990/T1 age/Wat/WatchdogMain.cpp:1373 ]: Starting Passenger watchdog...
+[ N 2022-11-21 13:09:37.5409 6994/T1 age/Cor/CoreMain.cpp:1340 ]: Starting Passenger core...
+[ N 2022-11-21 13:09:37.5411 6994/T1 age/Cor/CoreMain.cpp:256 ]: Passenger core running in multi-application mode.
+[ N 2022-11-21 13:09:37.5755 6994/T1 age/Cor/CoreMain.cpp:1015 ]: Passenger core online, PID 6994
+App 7018 output: ERROR:root:code for hash md5 was not found.
+App 7018 output: Traceback (most recent call last):
+App 7018 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 147, in <module>
+App 7018 output:     globals()[__func_name] = __get_hash(__func_name)
+App 7018 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+App 7018 output:     raise ValueError('unsupported hash type ' + name)
+App 7018 output: ValueError: unsupported hash type md5
+App 7018 output: ERROR:root:code for hash sha1 was not found.
+App 7018 output: Traceback (most recent call last):
+App 7018 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 147, in <module>
+App 7018 output:     globals()[__func_name] = __get_hash(__func_name)
+App 7018 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+App 7018 output:     raise ValueError('unsupported hash type ' + name)
+App 7018 output: ValueError: unsupported hash type sha1
+App 7018 output: ERROR:root:code for hash sha224 was not found.
+App 7018 output: Traceback (most recent call last):
+App 7018 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 147, in <module>
+App 7018 output:     globals()[__func_name] = __get_hash(__func_name)
+App 7018 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+App 7018 output:     raise ValueError('unsupported hash type ' + name)
+App 7018 output: ValueError: unsupported hash type sha224
+App 7018 output: ERROR:root:code for hash sha256 was not found.
+App 7018 output: Traceback (most recent call last):
+App 7018 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 147, in <module>
+App 7018 output:     globals()[__func_name] = __get_hash(__func_name)
+App 7018 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+App 7018 output:     raise ValueError('unsupported hash type ' + name)
+App 7018 output: ValueError: unsupported hash type sha256
+App 7018 output: ERROR:root:code for hash sha384 was not found.
+App 7018 output: Traceback (most recent call last):
+App 7018 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 147, in <module>
+App 7018 output:     globals()[__func_name] = __get_hash(__func_name)
+App 7018 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+App 7018 output:     raise ValueError('unsupported hash type ' + name)
+App 7018 output: ValueError: unsupported hash type sha384
+App 7018 output: ERROR:root:code for hash sha512 was not found.
+App 7018 output: Traceback (most recent call last):
+App 7018 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 147, in <module>
+App 7018 output:     globals()[__func_name] = __get_hash(__func_name)
+App 7018 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+App 7018 output:     raise ValueError('unsupported hash type ' + name)
+App 7018 output: ValueError: unsupported hash type sha512
+App 7018 output: Traceback (most recent call last):
+App 7018 output:   File "/usr/local/Cellar/passenger/6.0.14_1/libexec/src/helper-scripts/wsgi-loader.py", line 369, in <module>
+App 7018 output:     app_module = load_app()
+App 7018 output:   File "/usr/local/Cellar/passenger/6.0.14_1/libexec/src/helper-scripts/wsgi-loader.py", line 76, in load_app
+App 7018 output:     return imp.load_source('passenger_wsgi', startup_file)
+App 7018 output:   File "/Users/Nils 1/Documents/OctoPyBot/v1/Bot/passenger_wsgi.py", line 1, in <module>
+App 7018 output:     from server import app as application
+App 7018 output:   File "/Users/Nils 1/Documents/OctoPyBot/v1/Bot/server.py", line 31
+App 7018 output:     print(f"{passphrase} trading {symbol} with {strategy} on {exchange} Sending order - {side} {symbol} at {order_price}.")
+App 7018 output:                     
+App 7018 output:                       
+App 7018 output:              
+App 7018 output:            
+App 7018 output:        
+App 7018 output:             
+App 7018 output:             
+App 7018 output:             
+App 7018 output:             
+App 7018 output: ^
+App 7018 output: SyntaxError: invalid syntax
+[ E 2022-11-21 13:09:40.1776 6994/Tz age/Cor/App/Implementation.cpp:221 ]: Could not spawn process for application /Users/Nils 1/Documents/OctoPyBot/v1/Bot: The application process exited prematurely.
+  Error ID: 365e411d
+  Error details saved to: /var/folders/qm/852nmvlx5x956g_t3kqytvvh0000gp/T//passenger-error-D8P7No.html
+
+[ E 2022-11-21 13:09:40.1870 6994/T8 age/Cor/Con/CheckoutSession.cpp:283 ]: [Client 1-1] Cannot checkout session because a spawning error occurred. The identifier of the error is 365e411d. Please see earlier logs for details about the error.
+[ N 2022-11-21 13:09:40.2837 6994/T5 age/Cor/SecurityUpdateChecker.h:519 ]: Security update check: no update found (next check in 24 hours)
+
+[ N 2022-11-21 13:11:09.9086 6994/T8 age/Cor/CoreMain.cpp:671 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2022-11-21 13:11:09.9087 6994/T1 age/Cor/CoreMain.cpp:1246 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2022-11-21 13:11:09.9088 6994/T8 Ser/Server.h:901 ]: [ServerThr.1] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9088 6994/Ta Ser/Server.h:901 ]: [ServerThr.2] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9088 6994/Ti Ser/Server.h:901 ]: [ServerThr.6] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9088 6994/To Ser/Server.h:901 ]: [ServerThr.9] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9089 6994/Ti Ser/Server.h:558 ]: [ServerThr.6] Shutdown finished
+[ N 2022-11-21 13:11:09.9088 6994/Ts Ser/Server.h:901 ]: [ServerThr.11] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9088 6994/Tk Ser/Server.h:901 ]: [ServerThr.7] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9088 6994/Tq Ser/Server.h:901 ]: [ServerThr.10] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9090 6994/Ts Ser/Server.h:558 ]: [ServerThr.11] Shutdown finished
+[ N 2022-11-21 13:11:09.9088 6994/Te Ser/Server.h:901 ]: [ServerThr.4] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9088 6994/Tu Ser/Server.h:901 ]: [ServerThr.12] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9091 6994/Te Ser/Server.h:558 ]: [ServerThr.4] Shutdown finished
+[ N 2022-11-21 13:11:09.9088 6994/Tm Ser/Server.h:901 ]: [ServerThr.8] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9090 6994/Tq Ser/Server.h:558 ]: [ServerThr.10] Shutdown finished
+[ N 2022-11-21 13:11:09.9092 6994/Tm Ser/Server.h:558 ]: [ServerThr.8] Shutdown finished
+[ N 2022-11-21 13:11:09.9091 6994/Tu Ser/Server.h:558 ]: [ServerThr.12] Shutdown finished
+[ N 2022-11-21 13:11:09.9088 6994/Tg Ser/Server.h:901 ]: [ServerThr.5] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9089 6994/To Ser/Server.h:558 ]: [ServerThr.9] Shutdown finished
+[ N 2022-11-21 13:11:09.9089 6994/Tw Ser/Server.h:901 ]: [ApiServer] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9088 6994/Tc Ser/Server.h:901 ]: [ServerThr.3] Freed 0 spare client objects
+[ N 2022-11-21 13:11:09.9088 6994/T8 Ser/Server.h:558 ]: [ServerThr.1] Shutdown finished
+[ N 2022-11-21 13:11:09.9088 6994/Ta Ser/Server.h:558 ]: [ServerThr.2] Shutdown finished
+[ N 2022-11-21 13:11:09.9090 6994/Tk Ser/Server.h:558 ]: [ServerThr.7] Shutdown finished
+[ N 2022-11-21 13:11:09.9093 6994/Tw Ser/Server.h:558 ]: [ApiServer] Shutdown finished
+[ N 2022-11-21 13:11:09.9093 6994/Tc Ser/Server.h:558 ]: [ServerThr.3] Shutdown finished
+[ N 2022-11-21 13:11:09.9092 6994/Tg Ser/Server.h:558 ]: [ServerThr.5] Shutdown finished
+[ N 2022-11-21 13:11:10.4603 6994/T1 age/Cor/CoreMain.cpp:1325 ]: Passenger core shutdown finished
+[ N 2022-11-21 13:14:11.5861 7566/T1 age/Wat/WatchdogMain.cpp:1373 ]: Starting Passenger watchdog...
+[ N 2022-11-21 13:14:11.6117 7568/T1 age/Cor/CoreMain.cpp:1340 ]: Starting Passenger core...
+[ N 2022-11-21 13:14:11.6119 7568/T1 age/Cor/CoreMain.cpp:256 ]: Passenger core running in multi-application mode.
+[ N 2022-11-21 13:14:11.6414 7568/T1 age/Cor/CoreMain.cpp:1015 ]: Passenger core online, PID 7568
+App 7588 output: ERROR:root:code for hash md5 was not found.
+App 7588 output: Traceback (most recent call last):
+App 7588 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 147, in <module>
+App 7588 output:     globals()[__func_name] = __get_hash(__func_name)
+App 7588 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+App 7588 output:     raise ValueError('unsupported hash type ' + name)
+App 7588 output: ValueError: unsupported hash type md5
+App 7588 output: ERROR:root:code for hash sha1 was not found.
+App 7588 output: Traceback (most recent call last):
+App 7588 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 147, in <module>
+App 7588 output:     globals()[__func_name] = __get_hash(__func_name)
+App 7588 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+App 7588 output:     raise ValueError('unsupported hash type ' + name)
+App 7588 output: ValueError: unsupported hash type sha1
+App 7588 output: ERROR:root:code for hash sha224 was not found.
+App 7588 output: Traceback (most recent call last):
+App 7588 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 147, in <module>
+App 7588 output:     globals()[__func_name] = __get_hash(__func_name)
+App 7588 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+App 7588 output:     raise ValueError('unsupported hash type ' + name)
+App 7588 output: ValueError: unsupported hash type sha224
+App 7588 output: ERROR:root:code for hash sha256 was not found.
+App 7588 output: Traceback (most recent call last):
+App 7588 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 147, in <module>
+App 7588 output:     globals()[__func_name] = __get_hash(__func_name)
+App 7588 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+App 7588 output:     raise ValueError('unsupported hash type ' + name)
+App 7588 output: ValueError: unsupported hash type sha256
+App 7588 output: ERROR:root:code for hash sha384 was not found.
+App 7588 output: Traceback (most recent call last):
+App 7588 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 147, in <module>
+App 7588 output:     globals()[__func_name] = __get_hash(__func_name)
+App 7588 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+App 7588 output:     raise ValueError('unsupported hash type ' + name)
+App 7588 output: ValueError: unsupported hash type sha384
+App 7588 output: ERROR:root:code for hash sha512 was not found.
+App 7588 output: Traceback (most recent call last):
+App 7588 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 147, in <module>
+App 7588 output:     globals()[__func_name] = __get_hash(__func_name)
+App 7588 output:   File "/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/2.7/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+App 7588 output:     raise ValueError('unsupported hash type ' + name)
+App 7588 output: ValueError: unsupported hash type sha512
+[ N 2022-11-21 13:14:13.9004 7568/T5 age/Cor/SecurityUpdateChecker.h:519 ]: Security update check: no update found (next check in 24 hours)
+App 7588 output: Traceback (most recent call last):
+App 7588 output:   File "/usr/local/Cellar/passenger/6.0.14_1/libexec/src/helper-scripts/wsgi-loader.py", line 369, in <module>
+App 7588 output:     app_module = load_app()
+App 7588 output:   File "/usr/local/Cellar/passenger/6.0.14_1/libexec/src/helper-scripts/wsgi-loader.py", line 76, in load_app
+App 7588 output:     return imp.load_source('passenger_wsgi', startup_file)
+App 7588 output:   File "/Users/Nils 1/Documents/OctoPyBot/v1/Bot/passenger_wsgi.py", line 1, in <module>
+App 7588 output:     from server import app as application
+App 7588 output:   File "/Users/Nils 1/Documents/OctoPyBot/v1/Bot/server.py", line 37
+App 7588 output:     print(f'Successfully executed long order alert on Binance :)')
+App 7588 output:               
+App 7588 output:                                
+App 7588 output:                   
+App 7588 output:  ^
+App 7588 output: SyntaxError: invalid syntax
+[ E 2022-11-21 13:14:13.9802 7568/Tz age/Cor/App/Implementation.cpp:221 ]: Could not spawn process for application /Users/Nils 1/Documents/OctoPyBot/v1/Bot: The application process exited prematurely.
+  Error ID: 645ba9fa
+  Error details saved to: /var/folders/qm/852nmvlx5x956g_t3kqytvvh0000gp/T//passenger-error-xI9YjF.html
+
+[ E 2022-11-21 13:14:13.9874 7568/T8 age/Cor/Con/CheckoutSession.cpp:283 ]: [Client 1-1] Cannot checkout session because a spawning error occurred. The identifier of the error is 645ba9fa. Please see earlier logs for details about the error.
+
+[ N 2022-11-21 13:15:08.5221 7568/T8 age/Cor/CoreMain.cpp:671 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2022-11-21 13:15:08.5221 7568/T1 age/Cor/CoreMain.cpp:1246 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2022-11-21 13:15:08.5223 7568/Ta Ser/Server.h:901 ]: [ServerThr.2] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5223 7568/Ta Ser/Server.h:558 ]: [ServerThr.2] Shutdown finished
+[ N 2022-11-21 13:15:08.5223 7568/Tq Ser/Server.h:901 ]: [ServerThr.10] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5223 7568/Te Ser/Server.h:901 ]: [ServerThr.4] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5224 7568/Ts Ser/Server.h:901 ]: [ServerThr.11] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5223 7568/Tc Ser/Server.h:901 ]: [ServerThr.3] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5224 7568/Tw Ser/Server.h:901 ]: [ApiServer] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5223 7568/To Ser/Server.h:901 ]: [ServerThr.9] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5224 7568/Ts Ser/Server.h:558 ]: [ServerThr.11] Shutdown finished
+[ N 2022-11-21 13:15:08.5225 7568/To Ser/Server.h:558 ]: [ServerThr.9] Shutdown finished
+[ N 2022-11-21 13:15:08.5223 7568/Ti Ser/Server.h:901 ]: [ServerThr.6] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5225 7568/Tw Ser/Server.h:558 ]: [ApiServer] Shutdown finished
+[ N 2022-11-21 13:15:08.5224 7568/Tn Ser/Server.h:901 ]: [ServerThr.8] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5226 7568/Ti Ser/Server.h:558 ]: [ServerThr.6] Shutdown finished
+[ N 2022-11-21 13:15:08.5224 7568/Tu Ser/Server.h:901 ]: [ServerThr.12] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5224 7568/Tq Ser/Server.h:558 ]: [ServerThr.10] Shutdown finished
+[ N 2022-11-21 13:15:08.5224 7568/Te Ser/Server.h:558 ]: [ServerThr.4] Shutdown finished
+[ N 2022-11-21 13:15:08.5223 7568/Tk Ser/Server.h:901 ]: [ServerThr.7] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5222 7568/T8 Ser/Server.h:901 ]: [ServerThr.1] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5225 7568/Tc Ser/Server.h:558 ]: [ServerThr.3] Shutdown finished
+[ N 2022-11-21 13:15:08.5223 7568/Tg Ser/Server.h:901 ]: [ServerThr.5] Freed 0 spare client objects
+[ N 2022-11-21 13:15:08.5227 7568/Tu Ser/Server.h:558 ]: [ServerThr.12] Shutdown finished
+[ N 2022-11-21 13:15:08.5226 7568/Tn Ser/Server.h:558 ]: [ServerThr.8] Shutdown finished
+[ N 2022-11-21 13:15:08.5228 7568/Tk Ser/Server.h:558 ]: [ServerThr.7] Shutdown finished
+[ N 2022-11-21 13:15:08.5229 7568/T8 Ser/Server.h:558 ]: [ServerThr.1] Shutdown finished
+[ N 2022-11-21 13:15:08.5229 7568/Tg Ser/Server.h:558 ]: [ServerThr.5] Shutdown finished
+[ N 2022-11-21 13:15:08.9111 7568/T1 age/Cor/CoreMain.cpp:1325 ]: Passenger core shutdown finished

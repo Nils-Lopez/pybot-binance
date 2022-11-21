@@ -90,6 +90,7 @@ def webhook():
     exchange = data['exchange']
     order_response = order(side, ticker, order_price, data['passphrase'], order_size, leverage, loss, req_type, strategy, exchange, tp_size)
     if order_response:
+        print('Order executed')
         return {
             "code": "success",
             "message": "Order executed."
