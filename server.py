@@ -2,9 +2,9 @@ import json, os
 
 from flask import Flask, request
 
-from dotenv import load_dotenv
-
-load_dotenv()
+if not os.environ.get("PRODUCTION"):
+    from dotenv import load_dotenv
+    load_dotenv()
 
 def config (str):
     os.getenv(str)
