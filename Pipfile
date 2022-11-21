@@ -8,7 +8,7 @@ flask = "*"
 gunicorn = "*"
 python-binance = "*"
 pymongo = "*"
-dotenv = "*"
+pythond-dotenv = "*"
 
 [dev-packages]
 
